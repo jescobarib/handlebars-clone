@@ -13,6 +13,5 @@ node_modules
 
 # Generated files
 /coverage/
-/dist/
 /tests/integration/*/dist/
 /spec/tmp/*
