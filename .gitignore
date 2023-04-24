@@ -12,6 +12,8 @@ node_modules
 .nyc_output
 
 # Generated files
+lib/handlebars/compiler/parser.js
 /coverage/
+/dist/
 /tests/integration/*/dist/
 /spec/tmp/*

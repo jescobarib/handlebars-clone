@@ -1,5 +1,9 @@
 module.exports = {
+  extends: '../../.eslintrc.js',
   env: {
-    mocha: true,
+    mocha: true
   },
+  parserOptions: {
+    ecmaVersion: 2018
+  }
 };

@@ -1,5 +1,6 @@
 var _ = require('underscore'),
   runner = require('./util/template-runner'),
+  eco,
   dust,
   Handlebars,
   Mustache;
@@ -16,6 +17,12 @@ try {
   /* NOP */
 }
 
+try {
+  eco = require('eco');
+} catch (err) {
+  /* NOP */
+}
+
 function error() {
   throw new Error('EWOT');
 }
@@ -28,31 +35,32 @@ function makeSuite(bench, name, template, handlebarsOnly) {
     handlebarsOut,
     compatOut,
     dustOut,
+    ecoOut,
     mustacheOut;
 
   var handlebar = Handlebars.compile(template.handlebars, { data: false }),
     compat = Handlebars.compile(template.handlebars, {
       data: false,
-      compat: true,
+      compat: true
     }),
     options = { helpers: template.helpers };
-  _.each(
-    template.partials && template.partials.handlebars,
-    function (partial, partialName) {
-      Handlebars.registerPartial(
-        partialName,
-        Handlebars.compile(partial, { data: false })
-      );
-    }
-  );
+  _.each(template.partials && template.partials.handlebars, function(
+    partial,
+    partialName
+  ) {
+    Handlebars.registerPartial(
+      partialName,
+      Handlebars.compile(partial, { data: false })
+    );
+  });
 
   handlebarsOut = handlebar(context, options);
-  bench('handlebars', function () {
+  bench('handlebars', function() {
     handlebar(context, options);
   });
 
   compatOut = compat(context, options);
-  bench('compat', function () {
+  bench('compat', function() {
     compat(context, options);
   });
 
@@ -65,15 +73,29 @@ function makeSuite(bench, name, template, handlebarsOnly) {
       dustOut = false;
       dust.loadSource(dust.compile(template.dust, templateName));
 
-      dust.render(templateName, context, function (err, out) {
+      dust.render(templateName, context, function(err, out) {
         dustOut = out;
       });
 
-      bench('dust', function () {
-        dust.render(templateName, context, function () {});
+      bench('dust', function() {
+        dust.render(templateName, context, function() {});
       });
     } else {
       bench('dust', error);
+    }
+  }
+
+  if (eco) {
+    if (template.eco) {
+      var ecoTemplate = eco.compile(template.eco);
+
+      ecoOut = ecoTemplate(context);
+
+      bench('eco', function() {
+        ecoTemplate(context);
+      });
+    } else {
+      bench('eco', error);
     }
   }
 
@@ -84,7 +106,7 @@ function makeSuite(bench, name, template, handlebarsOnly) {
     if (mustacheSource) {
       mustacheOut = Mustache.to_html(mustacheSource, context, mustachePartials);
 
-      bench('mustache', function () {
+      bench('mustache', function() {
         Mustache.to_html(mustacheSource, context, mustachePartials);
       });
     } else {
@@ -117,15 +139,16 @@ function makeSuite(bench, name, template, handlebarsOnly) {
 
   compare(compatOut, 'compat');
   compare(dustOut, 'dust');
+  compare(ecoOut, 'eco');
   compare(mustacheOut, 'mustache');
 }
 
-module.exports = function (grunt, callback) {
-  // Deferring load in case we are being run inline with the grunt build
+module.exports = function(grunt, callback) {
+  // Deferring load incase we are being run inline with the grunt build
   Handlebars = require('../../lib');
 
   console.log('Execution Throughput');
-  runner(grunt, makeSuite, function (times, scaled) {
+  runner(grunt, makeSuite, function(times, scaled) {
     callback(scaled);
   });
 };

@@ -4,8 +4,7 @@
  * https://github.com/DefinitelyTyped/DefinitelyTyped/commits/1ce60bdc07f10e0b076778c6c953271c072bc894/types/handlebars/handlebars-tests.ts
  */
 
-import Handlebars from 'handlebars';
-import { HandlebarsTemplateDelegate, hbs } from 'handlebars';
+import * as Handlebars from 'handlebars';
 
 const context = {
   author: { firstName: 'Alan', lastName: 'Johnson' },

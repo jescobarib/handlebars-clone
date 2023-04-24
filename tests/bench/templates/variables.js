@@ -3,4 +3,5 @@ module.exports = {
   handlebars: 'Hello {{name}}! You have {{count}} new messages.',
   dust: 'Hello {name}! You have {count} new messages.',
   mustache: 'Hello {{name}}! You have {{count}} new messages.',
+  eco: 'Hello <%= @name %>! You have <%= @count %> new messages.'
 };

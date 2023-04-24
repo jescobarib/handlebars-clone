@@ -4,10 +4,11 @@ module.exports = {
       { name: 'Moe' },
       { name: 'Larry' },
       { name: 'Curly' },
-      { name: 'Shemp' },
-    ],
+      { name: 'Shemp' }
+    ]
   },
   handlebars: '{{#each names}}{{name}}{{/each}}',
   dust: '{#names}{name}{/names}',
   mustache: '{{#names}}{{name}}{{/names}}',
+  eco: '<% for item in @names: %><%= item.name %><% end %>'
 };

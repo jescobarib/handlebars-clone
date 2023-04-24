@@ -1,16 +1,10 @@
 # How to Contribute
 
-## Reporting security issues
-
-Please don't open issues for security issues. Instead, file a report at https://www.npmjs.com/advisories/report?package=handlebars
-
 ## Reporting Issues
 
 Please see our [FAQ](https://github.com/handlebars-lang/handlebars.js/blob/master/FAQ.md) for common issues that people run into.
 
-Should you run into other issues with the project, please don't hesitate to let us know by filing an [issue][issue]!
-
-In general we are going to ask for an **example** of the problem failing, which can be as simple as a jsfiddle/jsbin/etc. We've put together a jsfiddle **[template][jsfiddle]** to ease this. (We will keep this link up to date as new releases occur, so feel free to check back here).
+Should you run into other issues with the project, please don't hesitate to let us know by filing an [issue][issue]! In general we are going to ask for an example of the problem failing, which can be as simple as a jsfiddle/jsbin/etc. We've put together a jsfiddle [template][jsfiddle] to ease this. (We will keep this link up to date as new releases occur, so feel free to check back here)
 
 Pull requests containing only failing tests demonstrating the issue are welcomed and this also helps ensure that your issue won't regress in the future once it's fixed.
 
@@ -21,8 +15,6 @@ Documentation issues on the [handlebarsjs.com](https://handlebarsjs.com) site sh
 - The branch `4.x` contains the currently released version. Bugfixes should be made in this branch.
 - The branch `master` contains the next version. A release date is not yet specified. Maintainers
   should merge the branch `4.x` into the master branch regularly.
-- The branch `3.x` contains the legacy version `3.x`. Bugfixes are applied separately (if needed). The branch will not
-  be merged with any of the other branches.
 
 ## Pull Requests
 
@@ -57,7 +49,7 @@ The `grunt dev` implements watching for tests and allows for in browser testing 
 If you notice any problems, please report them to the GitHub issue tracker at
 [http://github.com/handlebars-lang/handlebars.js/issues](http://github.com/handlebars-lang/handlebars.js/issues).
 
-## Running Tests
+##Running Tests
 
 To run tests locally, first install all dependencies.
 
@@ -140,4 +132,4 @@ in the `handlebars-lang/docs`-repo).
 [generator-release]: https://github.com/walmartlabs/generator-release
 [pull-request]: https://github.com/handlebars-lang/handlebars.js/pull/new/master
 [issue]: https://github.com/handlebars-lang/handlebars.js/issues/new
-[jsfiddle]: https://jsfiddle.net/4nbwjaqz/4/
+[jsfiddle]: https://jsfiddle.net/9D88g/180/
