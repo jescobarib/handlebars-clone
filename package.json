@@ -1,5 +1,5 @@
 {
-  "name": "handlebars",
+  "name": "handlebars-clone",
   "barename": "handlebars",
   "version": "4.7.7",
   "description": "Handlebars provides the power necessary to let you build semantic templates effectively with no frustration",
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/handlebars-lang/handlebars.js.git"
+    "url": "https://github.com/jescobarib/handlebars-clone.git"
   },
   "author": "Yehuda Katz",
   "license": "MIT",
